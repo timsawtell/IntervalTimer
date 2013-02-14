@@ -56,6 +56,10 @@
 		89D7C92F16CCE679004A5E39 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7C78716CCE677004A5E39 /* Reachability.m */; };
 		89D7CA2A16CCE7C9004A5E39 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7CA2616CCE7C9004A5E39 /* Timer.m */; };
 		89D7CA2B16CCE7C9004A5E39 /* _Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7CA2916CCE7C9004A5E39 /* _Timer.m */; };
+		89D7CA3016CCE8FE004A5E39 /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7CA2F16CCE8FE004A5E39 /* WorkoutViewController.m */; };
+		89D7CA3516CCEDC0004A5E39 /* TimerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7CA3416CCEDC0004A5E39 /* TimerHelper.m */; };
+		89D7CA3716CCEEA0004A5E39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D7CA3616CCEEA0004A5E39 /* QuartzCore.framework */; };
+		89D7CA3916CCF8EF004A5E39 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D7CA3816CCF8EE004A5E39 /* AudioToolbox.framework */; };
 		89DA25EA16978E17001273E1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DA25E916978E17001273E1 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -104,27 +108,6 @@
 		89097D1715799F8800913B9E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		89097D1915799F9100913B9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89097D1B1579A0F500913B9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		89097E9C1579C4EB00913B9E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		89097E9D1579C4EB00913B9E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		89097E9E1579C4EB00913B9E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		89097EA51579C5BA00913B9E /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
-		89097EA61579C5BA00913B9E /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
-		89097EA71579C5BA00913B9E /* UIColor+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extensions.h"; sourceTree = "<group>"; };
-		89097EA81579C5BA00913B9E /* UIColor+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extensions.m"; sourceTree = "<group>"; };
-		89097EAA1579C5BA00913B9E /* Appearances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearances.h; sourceTree = "<group>"; };
-		89097EAB1579C5BA00913B9E /* Appearances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearances.m; sourceTree = "<group>"; };
-		89097EAC1579C5BA00913B9E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		89097EAD1579C5BA00913B9E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		89097EB11579C5BA00913B9E /* SettingsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHelper.h; sourceTree = "<group>"; };
-		89097EB21579C5BA00913B9E /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
-		890F5D8D15CE25A400509261 /* UIView+loadFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+loadFromNib.h"; sourceTree = "<group>"; };
-		890F5D8E15CE25A400509261 /* UIView+loadFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+loadFromNib.m"; sourceTree = "<group>"; };
-		892D00B91579C86D00C94388 /* IntervalTimer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = "IntervalTimer-Info.plist"; path = "Users/timsawtell/Documents/development/iPhone/intervaltimer/TSBoilerplate/IntervalTimer-Info.plist"; sourceTree = SDKROOT; };
-		892D00BB1579C88500C94388 /* IntervalTimer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "IntervalTimer-Prefix.pch"; path = "Users/timsawtell/Documents/development/iPhone/intervaltimer/TSBoilerplate/IntervalTimer-Prefix.pch"; sourceTree = SDKROOT; };
-		892D01211579DE4800C94388 /* NSError+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Factory.h"; sourceTree = "<group>"; };
-		892D01221579DE4800C94388 /* NSError+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Factory.m"; sourceTree = "<group>"; };
-		89CC551F15B6542B00EA504D /* RoundedRectUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectUtility.h; sourceTree = "<group>"; };
-		89CC552015B6542B00EA504D /* RoundedRectUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectUtility.m; sourceTree = "<group>"; };
 		89D7C77416CCE677004A5E39 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		89D7C77516CCE677004A5E39 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		89D7C77616CCE677004A5E39 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
@@ -149,9 +132,13 @@
 		89D7CA2816CCE7C9004A5E39 /* _Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Timer.h; sourceTree = "<group>"; };
 		89D7CA2916CCE7C9004A5E39 /* _Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Timer.m; sourceTree = "<group>"; };
 		89D7CA2C16CCE7E7004A5E39 /* IntervalTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = IntervalTimer.entitlements; sourceTree = "<group>"; };
+		89D7CA2E16CCE8FE004A5E39 /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
+		89D7CA2F16CCE8FE004A5E39 /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
+		89D7CA3316CCEDC0004A5E39 /* TimerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerHelper.h; sourceTree = "<group>"; };
+		89D7CA3416CCEDC0004A5E39 /* TimerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerHelper.m; sourceTree = "<group>"; };
+		89D7CA3616CCEEA0004A5E39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		89D7CA3816CCF8EE004A5E39 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		89DA25E916978E17001273E1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DDFD8693159D2FF600DB0164 /* Model+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+Test.h"; sourceTree = "<group>"; };
-		DDFD8694159D2FF600DB0164 /* Model+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+Test.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +146,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D7CA3916CCF8EF004A5E39 /* AudioToolbox.framework in Frameworks */,
+				89D7CA3716CCEEA0004A5E39 /* QuartzCore.framework in Frameworks */,
 				89097D1C1579A0F500913B9E /* Security.framework in Frameworks */,
 				89097D1A15799F9100913B9E /* SystemConfiguration.framework in Frameworks */,
 				89097D1815799F8800913B9E /* CFNetwork.framework in Frameworks */,
@@ -175,10 +164,10 @@
 			isa = PBXGroup;
 			children = (
 				89D7CA2C16CCE7E7004A5E39 /* IntervalTimer.entitlements */,
-				89005D3B16CCE59200139CAF /* Controller */,
 				89005D5A16CCE59200139CAF /* InfoPlist.strings */,
 				89005D5C16CCE59200139CAF /* IntervalTimer-Info.plist */,
 				89005D5D16CCE59200139CAF /* IntervalTimer-Prefix.pch */,
+				89005D3B16CCE59200139CAF /* Controller */,
 				89005D5E16CCE59200139CAF /* Model */,
 				89005D8016CCE59200139CAF /* Supporting Files */,
 				89005D9916CCE59300139CAF /* View */,
@@ -189,6 +178,7 @@
 		89005D3B16CCE59200139CAF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				89D7CA2D16CCE8D7004A5E39 /* ViewControllers */,
 				89005D3C16CCE59200139CAF /* Application */,
 			);
 			path = Controller;
@@ -309,6 +299,8 @@
 				89005D9516CCE59300139CAF /* RoundedRectUtility.m */,
 				89005D9616CCE59300139CAF /* SettingsHelper.h */,
 				89005D9716CCE59300139CAF /* SettingsHelper.m */,
+				89D7CA3316CCEDC0004A5E39 /* TimerHelper.h */,
+				89D7CA3416CCEDC0004A5E39 /* TimerHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -335,7 +327,6 @@
 				89DA25E916978E17001273E1 /* Default-568h@2x.png */,
 				89D7C73F16CCE677004A5E39 /* External */,
 				89005D3A16CCE59200139CAF /* IntervalTimer */,
-				89097E9B1579C4EB00913B9E /* Supporting Files */,
 				89097C4715799DFF00913B9E /* Frameworks */,
 				89097C4515799DFF00913B9E /* Products */,
 			);
@@ -352,6 +343,8 @@
 		89097C4715799DFF00913B9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89D7CA3816CCF8EE004A5E39 /* AudioToolbox.framework */,
+				89D7CA3616CCEEA0004A5E39 /* QuartzCore.framework */,
 				89097D1B1579A0F500913B9E /* Security.framework */,
 				89097D1915799F9100913B9E /* SystemConfiguration.framework */,
 				89097D1715799F8800913B9E /* CFNetwork.framework */,
@@ -361,61 +354,6 @@
 				89097C6015799DFF00913B9E /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		89097E9B1579C4EB00913B9E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				89097EA41579C5BA00913B9E /* Categories */,
-				89097EA91579C5BA00913B9E /* Constants */,
-				89097EAE1579C5BA00913B9E /* Helpers */,
-				89097E9C1579C4EB00913B9E /* AppDelegate.h */,
-				89097E9D1579C4EB00913B9E /* AppDelegate.m */,
-				89097E9E1579C4EB00913B9E /* main.m */,
-				892D00B91579C86D00C94388 /* IntervalTimer-Info.plist */,
-				892D00BB1579C88500C94388 /* IntervalTimer-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			path = "TSBoilerplate/Supporting Files";
-			sourceTree = "<group>";
-		};
-		89097EA41579C5BA00913B9E /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				890F5D8D15CE25A400509261 /* UIView+loadFromNib.h */,
-				890F5D8E15CE25A400509261 /* UIView+loadFromNib.m */,
-				89097EA51579C5BA00913B9E /* NSFileManager+DirectoryLocations.h */,
-				89097EA61579C5BA00913B9E /* NSFileManager+DirectoryLocations.m */,
-				89097EA71579C5BA00913B9E /* UIColor+Extensions.h */,
-				89097EA81579C5BA00913B9E /* UIColor+Extensions.m */,
-				892D01211579DE4800C94388 /* NSError+Factory.h */,
-				892D01221579DE4800C94388 /* NSError+Factory.m */,
-				DDFD8693159D2FF600DB0164 /* Model+Test.h */,
-				DDFD8694159D2FF600DB0164 /* Model+Test.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		89097EA91579C5BA00913B9E /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				89097EAA1579C5BA00913B9E /* Appearances.h */,
-				89097EAB1579C5BA00913B9E /* Appearances.m */,
-				89097EAC1579C5BA00913B9E /* Constants.h */,
-				89097EAD1579C5BA00913B9E /* Constants.m */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
-		89097EAE1579C5BA00913B9E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				89CC551F15B6542B00EA504D /* RoundedRectUtility.h */,
-				89CC552015B6542B00EA504D /* RoundedRectUtility.m */,
-				89097EB11579C5BA00913B9E /* SettingsHelper.h */,
-				89097EB21579C5BA00913B9E /* SettingsHelper.m */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		89D7C73F16CCE677004A5E39 /* External */ = {
@@ -492,6 +430,15 @@
 				89D7CA2916CCE7C9004A5E39 /* _Timer.m */,
 			);
 			path = Machine;
+			sourceTree = "<group>";
+		};
+		89D7CA2D16CCE8D7004A5E39 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				89D7CA2E16CCE8FE004A5E39 /* WorkoutViewController.h */,
+				89D7CA2F16CCE8FE004A5E39 /* WorkoutViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -601,6 +548,8 @@
 				89D7C92F16CCE679004A5E39 /* Reachability.m in Sources */,
 				89D7CA2A16CCE7C9004A5E39 /* Timer.m in Sources */,
 				89D7CA2B16CCE7C9004A5E39 /* _Timer.m in Sources */,
+				89D7CA3016CCE8FE004A5E39 /* WorkoutViewController.m in Sources */,
+				89D7CA3516CCEDC0004A5E39 /* TimerHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

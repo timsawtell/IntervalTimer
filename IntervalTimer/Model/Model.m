@@ -18,8 +18,6 @@
 
 @implementation Model
 
-@synthesize group, tweets;
-
 #pragma mark - Data
 
 + (NSString*)savedDataPath
@@ -32,7 +30,10 @@
 {
     Model *model = [NSKeyedUnarchiver unarchiveObjectWithFile: [Model savedDataPath]];
     if (!model) {
-        return [Model new];
+        model = [Model new];
+        model.timer = [Timer new];
+        model.timer.restInterval = @10;
+        model.timer.workInterval = @20;
     }
     return model;
 }
@@ -65,14 +66,14 @@
 {
     self = [super init];
     if (self) {
-        self.group = [aDecoder decodeObjectForKey:@"group"];
+        self.timer = [aDecoder decodeObjectForKey:@"timer"];
     }
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.group forKey:@"group"];
+    [aCoder encodeObject:self.timer forKey:@"timer"];
 }
 
 @end

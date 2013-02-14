@@ -1,0 +1,172 @@
+//
+//  WorkoutViewController.m
+//  IntervalTimer
+//
+//  Created by Tim Sawtell on 14/02/13.
+//
+//
+
+#import "WorkoutViewController.h"
+#import "TimerHelper.h"
+
+
+
+@interface WorkoutViewController ()
+@property (nonatomic, assign) BOOL timerRunning;
+@property (nonatomic, assign) LastIntervalType lastInterval;
+@property (nonatomic, assign) NSUInteger lastRestFinishedAtSecondsElapsed;
+@property (nonatomic, assign) NSUInteger lastWorkFinishedAtSecondsElapsed;
+@end
+
+@implementation WorkoutViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.bgView.layer.cornerRadius = 5.0f;
+    self.workTextField.layer.cornerRadius = 5.0f;
+    self.restTextField.layer.cornerRadius = 5.0f;
+    self.timeBgView.layer.cornerRadius = 5.0f;
+    self.toggleButton.layer.cornerRadius = 5.0f;
+    self.workTextField.inputAccessoryView = [self accessoryView];
+    self.restTextField.inputAccessoryView = [self accessoryView];
+    self.lastInterval = LastIntervalTypeRest;
+    [self reloadData];
+}
+
+- (void)reloadData
+{
+    self.workTextField.text = self.timer.workInterval.stringValue;
+    self.restTextField.text = self.timer.restInterval.stringValue;
+    [self resetRunningTimer];
+    self.runningTimeLabel.text = [TimerHelper stringForTimeInterval:0];
+}
+
+- (void)resetRunningTimer
+{
+    [[Model sharedModel].runningTimer invalidate];
+    [Model sharedModel].runningTimer = nil;
+}
+
+- (void)endEditing
+{
+    [self.view endEditing:YES];
+}
+
+- (void)viewDidUnload
+{
+    [self setToggleButton:nil];
+    [self setTimeBgView:nil];
+    [self setWorkTextField:nil];
+    [self setRestTextField:nil];
+    [self setRunningTimeLabel:nil];
+    [super viewDidUnload];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    [self setBgView:nil];
+}
+
+- (IBAction)toggleButtonPressed:(id)sender
+{
+    if (self.timerRunning) {
+        [self stopTimer];
+        [self.toggleButton setTitle:@"Go Go Go!" forState:UIControlStateNormal];
+    } else {
+        [self startTimer];
+        [self.toggleButton setTitle:@"Stop Stop Stop!" forState:UIControlStateNormal];
+    }
+}
+
+- (void)startTimer
+{
+    self.timerRunning = YES;
+    self.timer.startTime = [NSDate date];
+    [Model sharedModel].runningTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                                        target:self
+                                                                      selector:@selector(timerTicked)
+                                                                      userInfo:nil
+                                                                       repeats:YES];
+    
+}
+
+- (void)stopTimer
+{
+    [self resetRunningTimer];
+    self.timerRunning = NO;
+}
+
+- (void)timerTicked
+{
+    NSTimeInterval timeDiff = [[NSDate date] timeIntervalSinceDate:self.timer.startTime];
+    self.runningTimeLabel.text = [TimerHelper stringForTimeInterval:timeDiff];
+    
+    NSUInteger timeDiffInt = (int)timeDiff;
+    switch (self.lastInterval) {
+        case LastIntervalTypeRest:
+        {
+            if (timeDiffInt >= self.lastRestFinishedAtSecondsElapsed + self.timer.workIntervalValue) {
+                NSLog(@"timeToRest");
+                self.lastInterval = LastIntervalTypeWork;
+                self.lastWorkFinishedAtSecondsElapsed = timeDiffInt;
+            }
+        }
+            break;
+        case LastIntervalTypeWork:
+        {
+            if (timeDiffInt >= self.lastWorkFinishedAtSecondsElapsed + self.timer.restIntervalValue) {
+                NSLog(@"timeToWork");
+                self.lastInterval = LastIntervalTypeRest;
+                self.lastRestFinishedAtSecondsElapsed = timeDiffInt;
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - textfield delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField == self.workTextField) {
+        self.timer.workInterval = [[[NSNumberFormatter alloc] init] numberFromString:textField.text];
+    } else {
+        self.timer.restInterval = [[[NSNumberFormatter alloc] init] numberFromString:textField.text];
+    }
+    [self reloadData];
+}
+
+#pragma mark - helper
+
+- (Timer *)timer
+{
+    return [Model sharedModel].timer;
+}
+
+- (NSTimer *)runningTimer
+{
+    return [Model sharedModel].runningTimer;
+}
+
+- (UIView *)accessoryView
+{
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    toolbar.barStyle = UIBarStyleBlackTranslucent;
+    UIBarButtonItem *btn  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endEditing)];
+    toolbar.items = [NSArray arrayWithObject:btn];
+    return toolbar;
+}
+
+@end

@@ -28,15 +28,6 @@ extern NSString * const kModelSavedDataFileName;
 
 extern CGFloat const kSecondsPerDay;
 extern CGFloat const kSecondsPerHour;
-extern CGFloat const kPaddingRightOnImportWaitingAnimation;
 
-extern NSString * const kTwitterTimelineBaseURL;
-extern NSString * const kIncludeEntities;
-extern NSString * const kIncludeReTweets;
-extern NSString * const kTweetCount;
-extern NSString * const kTwitterScreenName;
-extern NSString * const kTwitterUser;
-extern NSString * const kTwitterName;
-extern NSString * const kTweetText;
 
 @end

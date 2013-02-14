@@ -18,4 +18,6 @@
     #import "TSCommandRunner.h"
     #import "AsynchronousCommand.h"
     #import "Command.h"
+    #import "Timer.h"
+    #import <QuartzCore/QuartzCore.h>
 #endif

@@ -14,13 +14,12 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Group.h"
-#import "Member.h"
+#import "Timer.h"
 
 @interface Model : NSObject
 
-@property (nonatomic, strong) Group *group;
-@property (nonatomic, strong) NSArray *tweets;
+@property (nonatomic, strong) Timer *timer;
+@property (nonatomic, strong) NSTimer *runningTimer;
 + (Model*) sharedModel;
 - (void)save;
 @end

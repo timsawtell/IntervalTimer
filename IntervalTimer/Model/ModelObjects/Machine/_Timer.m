@@ -12,6 +12,7 @@
 
 NSString * const kModelPropertyTimerName = @"name";
 NSString * const kModelPropertyTimerRestInterval = @"restInterval";
+NSString * const kModelPropertyTimerStartTime = @"startTime";
 NSString * const kModelPropertyTimerWorkInterval = @"workInterval";
 
 @interface _Timer()
@@ -32,6 +33,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
     
 	  [set addObject:kModelPropertyTimerName];
 	  [set addObject:kModelPropertyTimerRestInterval];
+	  [set addObject:kModelPropertyTimerStartTime];
 	  [set addObject:kModelPropertyTimerWorkInterval];
     
     return [NSSet setWithSet:set];
@@ -56,6 +58,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
     if (self) {
         self.name = [aDecoder decodeObjectForKey: kModelPropertyTimerName];
         self.restInterval = [aDecoder decodeObjectForKey: kModelPropertyTimerRestInterval];
+        self.startTime = [aDecoder decodeObjectForKey: kModelPropertyTimerStartTime];
         self.workInterval = [aDecoder decodeObjectForKey: kModelPropertyTimerWorkInterval];
     }
     return self;
@@ -66,6 +69,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
     [super encodeWithCoder: aCoder];
     [aCoder encodeObject: self.name forKey: kModelPropertyTimerName];
     [aCoder encodeObject: self.restInterval forKey: kModelPropertyTimerRestInterval];
+    [aCoder encodeObject: self.startTime forKey: kModelPropertyTimerStartTime];
     [aCoder encodeObject: self.workInterval forKey: kModelPropertyTimerWorkInterval];
 }
 
@@ -77,6 +81,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
     {
         self.name = [dictionary objectForKey:kModelPropertyTimerName];
         self.restInterval = [dictionary objectForKey:kModelPropertyTimerRestInterval];
+        self.startTime = [dictionary objectForKey:kModelPropertyTimerStartTime];
         self.workInterval = [dictionary objectForKey:kModelPropertyTimerWorkInterval];
     }
     
@@ -88,6 +93,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     [dict setObjectIfNotNil:self.name forKey:kModelPropertyTimerName];
     [dict setObjectIfNotNil:self.restInterval forKey:kModelPropertyTimerRestInterval];
+    [dict setObjectIfNotNil:self.startTime forKey:kModelPropertyTimerStartTime];
     [dict setObjectIfNotNil:self.workInterval forKey:kModelPropertyTimerWorkInterval];
     return dict;
 }
@@ -117,6 +123,7 @@ NS_INLINE NSMutableSet* NonretainingNSMutableSetMake()
 
 @synthesize name;
 @synthesize restInterval;
+@synthesize startTime;
 @synthesize workInterval;
 
 @end

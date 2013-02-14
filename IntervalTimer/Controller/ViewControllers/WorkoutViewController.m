@@ -8,7 +8,7 @@
 
 #import "WorkoutViewController.h"
 #import "TimerHelper.h"
-
+#import <AudioToolbox/AudioServices.h>
 
 
 @interface WorkoutViewController ()
@@ -113,6 +113,7 @@
                 NSLog(@"timeToRest");
                 self.lastInterval = LastIntervalTypeWork;
                 self.lastWorkFinishedAtSecondsElapsed = timeDiffInt;
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); 
             }
         }
             break;
@@ -122,6 +123,7 @@
                 NSLog(@"timeToWork");
                 self.lastInterval = LastIntervalTypeRest;
                 self.lastRestFinishedAtSecondsElapsed = timeDiffInt;
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); 
             }
         }
             break;

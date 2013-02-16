@@ -16,6 +16,7 @@
 @property (nonatomic, assign) LastIntervalType lastInterval;
 @property (nonatomic, assign) NSUInteger lastRestFinishedAtSecondsElapsed;
 @property (nonatomic, assign) NSUInteger lastWorkFinishedAtSecondsElapsed;
+@property (nonatomic, assign) SystemSoundID completedSound;
 @end
 
 @implementation WorkoutViewController
@@ -32,6 +33,10 @@
     self.workTextField.inputAccessoryView = [self accessoryView];
     self.restTextField.inputAccessoryView = [self accessoryView];
     self.lastInterval = LastIntervalTypeRest;
+    
+    NSString *soundPath =  [[NSBundle mainBundle] pathForResource:@"alert" ofType:@"aif"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &_completedSound);
+    
     [self reloadData];
 }
 
@@ -39,6 +44,8 @@
 {
     self.workTextField.text = self.timer.workInterval.stringValue;
     self.restTextField.text = self.timer.restInterval.stringValue;
+    self.playSwitch.on = self.timer.playAlertSoundValue;
+    self.vibrateSwitch.on = self.timer.vibrateValue;
     [self resetRunningTimer];
     self.runningTimeLabel.text = [TimerHelper stringForTimeInterval:0];
 }
@@ -62,6 +69,8 @@
     [self setRestTextField:nil];
     [self setRunningTimeLabel:nil];
     [self setWorkoutStatusLabel:nil];
+    [self setPlaySwitch:nil];
+    [self setVibrateSwitch:nil];
     [super viewDidUnload];
 }
 
@@ -100,6 +109,18 @@
     
 }
 
+- (IBAction)playAlertSoundChanged:(id)sender
+{
+    UISwitch *playSwitch = (UISwitch *)sender;
+    [Model sharedModel].timer.playAlertSoundValue = playSwitch.isOn;
+}
+
+- (IBAction)vibrateChanged:(id)sender
+{
+    UISwitch *vibrateSwitch = (UISwitch *)sender;
+    [Model sharedModel].timer.vibrateValue = vibrateSwitch.isOn;
+}
+
 - (void)stopTimer
 {
     [self resetRunningTimer];
@@ -107,8 +128,9 @@
     self.lastRestFinishedAtSecondsElapsed = 0;
     self.workTextField.userInteractionEnabled = YES;
     self.restTextField.userInteractionEnabled = YES;
-    self.workoutStatusLabel.text = @"Resting";
+    self.workoutStatusLabel.text = @"--";
     self.timerRunning = NO;
+    self.lastInterval = LastIntervalTypeRest;
 }
 
 - (void)timerTicked
@@ -124,7 +146,12 @@
                 NSLog(@"timeToRest");
                 self.lastInterval = LastIntervalTypeWork;
                 self.lastWorkFinishedAtSecondsElapsed = timeDiffInt;
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                if (self.timer.vibrateValue) {
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
+                if (self.timer.playAlertSoundValue) {
+                    AudioServicesPlaySystemSound(self.completedSound);
+                }
                 self.workoutStatusLabel.text = @"Resting";
             }
         }
@@ -135,7 +162,12 @@
                 NSLog(@"timeToWork");
                 self.lastInterval = LastIntervalTypeRest;
                 self.lastRestFinishedAtSecondsElapsed = timeDiffInt;
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                if (self.timer.vibrateValue) {
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
+                if (self.timer.playAlertSoundValue) {
+                    AudioServicesPlaySystemSound(self.completedSound);
+                }
                 self.workoutStatusLabel.text = @"Working";
             }
         }
@@ -182,6 +214,11 @@
     UIBarButtonItem *btn  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endEditing)];
     toolbar.items = [NSArray arrayWithObject:btn];
     return toolbar;
+}
+
+- (void)dealloc
+{
+    AudioServicesRemoveSystemSoundCompletion(self.completedSound);
 }
 
 @end

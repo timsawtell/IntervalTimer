@@ -2,11 +2,13 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Timer" representedClassName="Timer" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="playAlertSound" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="restInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="vibrate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="workInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Timer" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Timer" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

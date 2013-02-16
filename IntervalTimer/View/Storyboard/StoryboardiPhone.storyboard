@@ -33,8 +33,8 @@
                                             <action selector="toggleButtonPressed:" destination="R4Z-cl-kfK" eventType="touchUpInside" id="Mmd-ay-IKL"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Play Alert: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G1R-6Y-lj6">
-                                        <rect key="frame" x="23" y="121" width="107" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Play Sound: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G1R-6Y-lj6">
+                                        <rect key="frame" x="23" y="117" width="107" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -43,9 +43,12 @@
                                         <size key="shadowOffset" width="1" height="-1"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Ihu-Zj-2Cx">
-                                        <rect key="frame" x="138" y="118" width="79" height="27"/>
+                                        <rect key="frame" x="138" y="114" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="onTintColor" red="0.392156899" green="0.56862747670000002" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
+                                        <connections>
+                                            <action selector="playAlertSoundChanged:" destination="R4Z-cl-kfK" eventType="valueChanged" id="Rem-8h-zmb"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Work Interval: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SFf-N5-ytK">
                                         <rect key="frame" x="20" y="16" width="110" height="21"/>
@@ -87,6 +90,24 @@
                                             <outlet property="delegate" destination="R4Z-cl-kfK" id="nys-N5-5cj"/>
                                         </connections>
                                     </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vibrate: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yeB-Ao-EnX">
+                                        <rect key="frame" x="23" y="161" width="107" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="shadowOffset" width="1" height="-1"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="jf3-44-eVB">
+                                        <rect key="frame" x="138" y="158" width="79" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="onTintColor" red="0.392156899" green="0.56862747670000002" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
+                                        <connections>
+                                            <action selector="playAlertSoundChanged:" destination="R4Z-cl-kfK" eventType="valueChanged" id="7As-eb-XaC"/>
+                                            <action selector="vibrateChanged:" destination="R4Z-cl-kfK" eventType="valueChanged" id="yBK-b9-kEB"/>
+                                        </connections>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -127,10 +148,12 @@
                     </view>
                     <connections>
                         <outlet property="bgView" destination="Js1-DT-LnL" id="GUZ-dk-Ipa"/>
+                        <outlet property="playSwitch" destination="Ihu-Zj-2Cx" id="XlF-pf-xfA"/>
                         <outlet property="restTextField" destination="oiH-wF-5JH" id="goW-s1-nB4"/>
                         <outlet property="runningTimeLabel" destination="pU9-U9-ET7" id="uRq-d6-fGF"/>
                         <outlet property="timeBgView" destination="m3v-ie-o83" id="0KF-fU-V3h"/>
                         <outlet property="toggleButton" destination="5o5-7L-aBF" id="ntU-Kz-mPS"/>
+                        <outlet property="vibrateSwitch" destination="jf3-44-eVB" id="Bv0-OZ-mPI"/>
                         <outlet property="workTextField" destination="jGn-sC-joJ" id="qHd-p6-2x4"/>
                         <outlet property="workoutStatusLabel" destination="Axt-5k-tUM" id="7M8-yY-Go6"/>
                     </connections>
@@ -140,21 +163,6 @@
             <point key="canvasLocation" x="116" y="34"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="WorkoutViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleButtonPressed:"/>
-                <relationship kind="outlet" name="bgView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="restTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="runningTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeBgView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="toggleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="workTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="workoutStatusLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -20,4 +20,5 @@
     #import "Command.h"
     #import "Timer.h"
     #import <QuartzCore/QuartzCore.h>
+    #import "UIColor+Extensions.h"
 #endif

@@ -61,6 +61,7 @@
     [self setWorkTextField:nil];
     [self setRestTextField:nil];
     [self setRunningTimeLabel:nil];
+    [self setWorkoutStatusLabel:nil];
     [super viewDidUnload];
 }
 
@@ -75,10 +76,12 @@
 {
     if (self.timerRunning) {
         [self stopTimer];
-        [self.toggleButton setTitle:@"Go Go Go!" forState:UIControlStateNormal];
+        [self.toggleButton setTitle:@"Begin" forState:UIControlStateNormal];
+        self.toggleButton.backgroundColor = [UIColor colorWithHexString:@"#528112"];
     } else {
         [self startTimer];
-        [self.toggleButton setTitle:@"Stop Stop Stop!" forState:UIControlStateNormal];
+        [self.toggleButton setTitle:@"End" forState:UIControlStateNormal];
+        self.toggleButton.backgroundColor = [UIColor colorWithHexString:@"#B15E5C"];
     }
 }
 
@@ -86,6 +89,9 @@
 {
     self.timerRunning = YES;
     self.timer.startTime = [NSDate date];
+    self.workTextField.userInteractionEnabled = NO;
+    self.restTextField.userInteractionEnabled = NO;
+    self.workoutStatusLabel.text = @"Working";
     [Model sharedModel].runningTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                                         target:self
                                                                       selector:@selector(timerTicked)
@@ -97,6 +103,11 @@
 - (void)stopTimer
 {
     [self resetRunningTimer];
+    self.lastWorkFinishedAtSecondsElapsed = 0;
+    self.lastRestFinishedAtSecondsElapsed = 0;
+    self.workTextField.userInteractionEnabled = YES;
+    self.restTextField.userInteractionEnabled = YES;
+    self.workoutStatusLabel.text = @"Resting";
     self.timerRunning = NO;
 }
 
@@ -113,7 +124,8 @@
                 NSLog(@"timeToRest");
                 self.lastInterval = LastIntervalTypeWork;
                 self.lastWorkFinishedAtSecondsElapsed = timeDiffInt;
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); 
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                self.workoutStatusLabel.text = @"Resting";
             }
         }
             break;
@@ -123,7 +135,8 @@
                 NSLog(@"timeToWork");
                 self.lastInterval = LastIntervalTypeRest;
                 self.lastRestFinishedAtSecondsElapsed = timeDiffInt;
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); 
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                self.workoutStatusLabel.text = @"Working";
             }
         }
             break;

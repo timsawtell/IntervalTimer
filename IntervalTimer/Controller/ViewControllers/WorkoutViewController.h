@@ -21,5 +21,6 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UITextField *workTextField;
 @property (weak, nonatomic) IBOutlet UITextField *restTextField;
 @property (weak, nonatomic) IBOutlet UILabel *runningTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workoutStatusLabel;
 
 @end

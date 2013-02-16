@@ -25,12 +25,7 @@
 {
     [super viewDidLoad];
     
-    self.bgView.layer.cornerRadius = 5.0f;
-    self.workTextField.layer.cornerRadius = 5.0f;
-    self.restTextField.layer.cornerRadius = 5.0f;
-    self.timeBgView.layer.cornerRadius = 5.0f;
-    self.toggleButton.layer.cornerRadius = 5.0f;
-    self.statusBgView.layer.cornerRadius = 5.0f;
+    self.bgView.layer.cornerRadius = self.workTextField.layer.cornerRadius = self.restTextField.layer.cornerRadius = self.timeBgView.layer.cornerRadius = self.toggleButton.layer.cornerRadius = self.statusBgView.layer.cornerRadius = kSizeOfCornerRounding;
     self.workTextField.inputAccessoryView = [self accessoryView];
     self.restTextField.inputAccessoryView = [self accessoryView];
     self.lastInterval = LastIntervalTypeRest;
@@ -197,10 +192,14 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    NSNumber *value = [[[NSNumberFormatter alloc] init] numberFromString:textField.text];
+    if (value.integerValue <= 0) {
+        value = @1;
+    }
     if (textField == self.workTextField) {
-        self.timer.workInterval = [[[NSNumberFormatter alloc] init] numberFromString:textField.text];
+        self.timer.workInterval = value;
     } else {
-        self.timer.restInterval = [[[NSNumberFormatter alloc] init] numberFromString:textField.text];
+        self.timer.restInterval = value;
     }
     [self reloadData];
 }

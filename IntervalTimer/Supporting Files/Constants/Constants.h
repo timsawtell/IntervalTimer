@@ -27,6 +27,7 @@ extern NSString * const kRegexForEmail;
 extern NSString * const kModelSavedDataFileName;
 
 extern CGFloat const kAlphaForHighlightedButtons;
+extern CGFloat const kSizeOfCornerRounding;
 extern CGFloat const kSecondsPerDay;
 extern CGFloat const kSecondsPerHour;
 

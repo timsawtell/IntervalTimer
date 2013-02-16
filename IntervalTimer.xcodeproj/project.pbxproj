@@ -46,6 +46,10 @@
 		89097D1A15799F9100913B9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1915799F9100913B9E /* SystemConfiguration.framework */; };
 		89097D1C1579A0F500913B9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89097D1B1579A0F500913B9E /* Security.framework */; };
 		89C9D0CD16CF95180019F5E8 /* alert.aif in Resources */ = {isa = PBXBuildFile; fileRef = 89C9D0CC16CF95180019F5E8 /* alert.aif */; };
+		89C9D0D016CF9B880019F5E8 /* soundOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C9D0CE16CF9B880019F5E8 /* soundOff.png */; };
+		89C9D0D116CF9B880019F5E8 /* soundOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C9D0CF16CF9B880019F5E8 /* soundOff@2x.png */; };
+		89C9D0D416CF9EFA0019F5E8 /* vibrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C9D0D216CF9EFA0019F5E8 /* vibrate.png */; };
+		89C9D0D516CF9EFA0019F5E8 /* vibrate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C9D0D316CF9EFA0019F5E8 /* vibrate@2x.png */; };
 		89D7C92716CCE679004A5E39 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7C77516CCE677004A5E39 /* NSAlert+MKNetworkKitAdditions.m */; };
 		89D7C92816CCE679004A5E39 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7C77716CCE677004A5E39 /* NSData+MKBase64.m */; };
 		89D7C92916CCE679004A5E39 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7C77916CCE677004A5E39 /* NSDate+RFC1123.m */; };
@@ -110,6 +114,10 @@
 		89097D1915799F9100913B9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89097D1B1579A0F500913B9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		89C9D0CC16CF95180019F5E8 /* alert.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = alert.aif; sourceTree = "<group>"; };
+		89C9D0CE16CF9B880019F5E8 /* soundOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundOff.png; sourceTree = "<group>"; };
+		89C9D0CF16CF9B880019F5E8 /* soundOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOff@2x.png"; sourceTree = "<group>"; };
+		89C9D0D216CF9EFA0019F5E8 /* vibrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vibrate.png; sourceTree = "<group>"; };
+		89C9D0D316CF9EFA0019F5E8 /* vibrate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vibrate@2x.png"; sourceTree = "<group>"; };
 		89D7C77416CCE677004A5E39 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		89D7C77516CCE677004A5E39 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		89D7C77616CCE677004A5E39 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
@@ -363,6 +371,10 @@
 			isa = PBXGroup;
 			children = (
 				89C9D0CC16CF95180019F5E8 /* alert.aif */,
+				89C9D0CE16CF9B880019F5E8 /* soundOff.png */,
+				89C9D0CF16CF9B880019F5E8 /* soundOff@2x.png */,
+				89C9D0D216CF9EFA0019F5E8 /* vibrate.png */,
+				89C9D0D316CF9EFA0019F5E8 /* vibrate@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -506,6 +518,10 @@
 				89DA25EA16978E17001273E1 /* Default-568h@2x.png in Resources */,
 				89005DC816CCE59300139CAF /* StoryboardiPhone.storyboard in Resources */,
 				89C9D0CD16CF95180019F5E8 /* alert.aif in Resources */,
+				89C9D0D016CF9B880019F5E8 /* soundOff.png in Resources */,
+				89C9D0D116CF9B880019F5E8 /* soundOff@2x.png in Resources */,
+				89C9D0D416CF9EFA0019F5E8 /* vibrate.png in Resources */,
+				89C9D0D516CF9EFA0019F5E8 /* vibrate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

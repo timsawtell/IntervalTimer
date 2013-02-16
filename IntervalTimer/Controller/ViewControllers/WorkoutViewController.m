@@ -30,6 +30,7 @@
     self.restTextField.layer.cornerRadius = 5.0f;
     self.timeBgView.layer.cornerRadius = 5.0f;
     self.toggleButton.layer.cornerRadius = 5.0f;
+    self.statusBgView.layer.cornerRadius = 5.0f;
     self.workTextField.inputAccessoryView = [self accessoryView];
     self.restTextField.inputAccessoryView = [self accessoryView];
     self.lastInterval = LastIntervalTypeRest;
@@ -44,8 +45,8 @@
 {
     self.workTextField.text = self.timer.workInterval.stringValue;
     self.restTextField.text = self.timer.restInterval.stringValue;
-    self.playSwitch.on = self.timer.playAlertSoundValue;
-    self.vibrateSwitch.on = self.timer.vibrateValue;
+    self.soundButton.alpha = self.timer.playAlertSoundValue ? 1 : kAlphaForHighlightedButtons;
+    self.vibrateButton.alpha = self.timer.vibrateValue ? 1 : kAlphaForHighlightedButtons;
     [self resetRunningTimer];
     self.runningTimeLabel.text = [TimerHelper stringForTimeInterval:0];
 }
@@ -69,8 +70,9 @@
     [self setRestTextField:nil];
     [self setRunningTimeLabel:nil];
     [self setWorkoutStatusLabel:nil];
-    [self setPlaySwitch:nil];
-    [self setVibrateSwitch:nil];
+    [self setStatusBgView:nil];
+    [self setSoundButton:nil];
+    [self setVibrateButton:nil];
     [super viewDidUnload];
 }
 
@@ -109,16 +111,24 @@
     
 }
 
-- (IBAction)playAlertSoundChanged:(id)sender
+- (IBAction)soundToggled:(id)sender
 {
-    UISwitch *playSwitch = (UISwitch *)sender;
-    [Model sharedModel].timer.playAlertSoundValue = playSwitch.isOn;
+    [Model sharedModel].timer.playAlertSoundValue = ![Model sharedModel].timer.playAlertSoundValue;
+    if (![Model sharedModel].timer.playAlertSoundValue) {
+        self.soundButton.alpha = kAlphaForHighlightedButtons;
+    } else {
+        self.soundButton.alpha = 1;
+    }
 }
 
-- (IBAction)vibrateChanged:(id)sender
+- (IBAction)vibrateToggled:(id)sender
 {
-    UISwitch *vibrateSwitch = (UISwitch *)sender;
-    [Model sharedModel].timer.vibrateValue = vibrateSwitch.isOn;
+    [Model sharedModel].timer.vibrateValue = ![Model sharedModel].timer.vibrateValue;
+    if (![Model sharedModel].timer.vibrateValue) {
+        self.vibrateButton.alpha = kAlphaForHighlightedButtons;
+    } else {
+        self.vibrateButton.alpha = 1;
+    }
 }
 
 - (void)stopTimer

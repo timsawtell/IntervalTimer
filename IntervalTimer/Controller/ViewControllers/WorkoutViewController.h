@@ -16,13 +16,14 @@ typedef enum {
 @interface WorkoutViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *timeBgView;
+@property (weak, nonatomic) IBOutlet UIView *statusBgView;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIButton *toggleButton;
 @property (weak, nonatomic) IBOutlet UITextField *workTextField;
 @property (weak, nonatomic) IBOutlet UITextField *restTextField;
 @property (weak, nonatomic) IBOutlet UILabel *runningTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutStatusLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *playSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *vibrateSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *soundButton;
+@property (weak, nonatomic) IBOutlet UIButton *vibrateButton;
 
 @end

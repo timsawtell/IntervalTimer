@@ -35,7 +35,7 @@
         model.timer.restInterval = @10;
         model.timer.workInterval = @20;
         model.timer.vibrate = @YES;
-        model.timer.playAlertSound = @YES;
+        model.timer.playAlertSound = @NO;
     }
     return model;
 }

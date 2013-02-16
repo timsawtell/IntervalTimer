@@ -31,6 +31,16 @@
     
 }
 
++ (UIColor *)colorForWorking
+{
+    return [UIColor colorWithHexString:@"#528112"];
+}
+
++ (UIColor *)colorForResting
+{
+    return [UIColor colorWithHexString:@"#B15E5C"];
+}
+
 + (UIColor *)navButtonColor 
 {
     return [UIColor colorWithPatternImage:[UIImage imageNamed:@"black_navigation_bar_button"]];

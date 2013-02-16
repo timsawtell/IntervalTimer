@@ -83,11 +83,11 @@
     if (self.timerRunning) {
         [self stopTimer];
         [self.toggleButton setTitle:@"Begin" forState:UIControlStateNormal];
-        self.toggleButton.backgroundColor = [UIColor colorWithHexString:@"#528112"];
+        self.toggleButton.backgroundColor = [Appearances colorForWorking];
     } else {
         [self startTimer];
         [self.toggleButton setTitle:@"End" forState:UIControlStateNormal];
-        self.toggleButton.backgroundColor = [UIColor colorWithHexString:@"#B15E5C"];
+        self.toggleButton.backgroundColor =  [Appearances colorForWorking];
     }
 }
 
@@ -166,7 +166,6 @@
         case LastIntervalTypeRest:
         {
             if (timeDiffInt >= self.lastRestFinishedAtSecondsElapsed + self.timer.workIntervalValue) {
-                NSLog(@"timeToRest");
                 self.lastInterval = LastIntervalTypeWork;
                 self.lastWorkFinishedAtSecondsElapsed = timeDiffInt;
                 if (self.timer.vibrateValue) {
@@ -176,13 +175,13 @@
                     AudioServicesPlaySystemSound(self.completedSound);
                 }
                 self.workoutStatusLabel.text = @"Resting";
+                self.toggleButton.backgroundColor =  [Appearances colorForResting];
             }
         }
             break;
         case LastIntervalTypeWork:
         {
             if (timeDiffInt >= self.lastWorkFinishedAtSecondsElapsed + self.timer.restIntervalValue) {
-                NSLog(@"timeToWork");
                 self.lastInterval = LastIntervalTypeRest;
                 self.lastRestFinishedAtSecondsElapsed = timeDiffInt;
                 if (self.timer.vibrateValue) {
@@ -192,6 +191,7 @@
                     AudioServicesPlaySystemSound(self.completedSound);
                 }
                 self.workoutStatusLabel.text = @"Working";
+                self.toggleButton.backgroundColor =  [Appearances colorForWorking];
             }
         }
             break;

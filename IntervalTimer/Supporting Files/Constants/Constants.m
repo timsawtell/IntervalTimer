@@ -24,7 +24,7 @@ NSString * const kRegexForEmail = @"^([a-zA-Z0-9\\+\\_\\-\\.]+)@[a-z0-9-]+(\\.[a
 NSString * const kModelSavedDataFileName = @"IntervalTimer.dat";
 
 CGFloat const kAlphaForHighlightedButtons = 0.3f;
-CGFloat const kSizeOfCornerRounding = 3.0f;
+CGFloat const kSizeOfCornerRounding = 3.5f;
 CGFloat const kSecondsPerDay = 86400;
 CGFloat const kSecondsPerHour = 3600;
 

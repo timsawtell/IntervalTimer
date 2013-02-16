@@ -19,4 +19,7 @@
 + (void)globalAppearances;
 + (UIImage *)backgroundImage;
 + (UIFont *)titleBarFont;
++ (UIColor *)colorForWorking;
++ (UIColor *)colorForResting;
+
 @end

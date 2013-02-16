@@ -91,20 +91,6 @@
     }
 }
 
-- (void)startTimer
-{
-    self.timerRunning = YES;
-    self.timer.startTime = [NSDate date];
-    self.workTextField.userInteractionEnabled = NO;
-    self.restTextField.userInteractionEnabled = NO;
-    self.workoutStatusLabel.text = @"Working";
-    [Model sharedModel].runningTimer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                                        target:self
-                                                                      selector:@selector(timerTicked)
-                                                                      userInfo:nil
-                                                                       repeats:YES];
-    
-}
 
 - (IBAction)soundToggled:(id)sender
 {
@@ -126,6 +112,21 @@
     }
 }
 
+- (void)startTimer
+{
+    self.timerRunning = YES;
+    self.timer.startTime = [NSDate date];
+    self.workTextField.userInteractionEnabled = NO;
+    self.restTextField.userInteractionEnabled = NO;
+    self.workoutStatusLabel.text = @"Working";
+    [Model sharedModel].runningTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                                        target:self
+                                                                      selector:@selector(timerTicked)
+                                                                      userInfo:nil
+                                                                       repeats:YES];
+    [self addScaleAnimation];
+}
+
 - (void)stopTimer
 {
     [self resetRunningTimer];
@@ -136,6 +137,23 @@
     self.workoutStatusLabel.text = @"--";
     self.timerRunning = NO;
     self.lastInterval = LastIntervalTypeRest;
+    [self removeScaleAnimation];
+}
+
+- (void)addScaleAnimation
+{
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation.autoreverses = YES;
+    scaleAnimation.repeatDuration = HUGE_VALF;
+    scaleAnimation.duration = 0.85;
+    scaleAnimation.fromValue = @1;
+    scaleAnimation.toValue= @1.2;
+    [self.workoutStatusLabel.layer addAnimation:scaleAnimation forKey:@"appDeleteShakeAnimation"];
+}
+
+- (void)removeScaleAnimation
+{
+    [self.workoutStatusLabel.layer removeAllAnimations];
 }
 
 - (void)timerTicked
